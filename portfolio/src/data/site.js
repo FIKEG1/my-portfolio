@@ -133,6 +133,9 @@ export const projects = [
     title: 'Smart IT Technical Support Expert System',
     summary:
       'A rule-based troubleshooting assistant for common hardware, networking, software, and security issues.',
+    image: '/smart-it-support-project.png',
+    imageAlt: 'Smart IT Support expert system dashboard showing troubleshooting categories and diagnostic cards',
+    imageFit: 'contain',
     status: 'Built',
     stack: ['SWI-Prolog'],
     built: [
