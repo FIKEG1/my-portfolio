@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fikadu | Aspiring Full-Stack Developer & AI Enthusiast</title>
+    <meta
+      name="description"
+      content="Portfolio of Fikadu, an aspiring full-stack developer building React, Node.js and PHP applications. Open to junior, remote and freelance opportunities."
+    />
+    <meta name="author" content="Fikadu" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Fikadu's Portfolio" />
+    <meta property="og:title" content="Fikadu | Aspiring Full-Stack Developer & AI Enthusiast" />
+    <meta
+      property="og:description"
+      content="Real projects, honest skill levels, and a growing full-stack toolkit."
+    />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Fikadu | Aspiring Full-Stack Developer & AI Enthusiast" />
+    <meta
+      name="twitter:description"
+      content="Real projects, honest skill levels, and a growing full-stack toolkit."
+    />
+    <meta name="theme-color" content="#090b12" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23087c66'/><text x='16' y='22' font-size='16' text-anchor='middle' fill='%23f7faf9' font-family='sans-serif' font-weight='700'>F</text></svg>"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" as="image" href="/me.jpg" fetchpriority="high" />
+    <script>
+      try {
+        var stored = localStorage.getItem('theme')
+        var theme =
+          stored || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        document.documentElement.classList.toggle('dark', theme === 'dark')
+        document.documentElement.dataset.theme = theme
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
