@@ -107,20 +107,22 @@ export const projects = [
   {
     title: 'Intelligent Job Matching and Recruitment Automation Platform',
     summary:
-      'A recruitment platform that aims to match candidates with roles and support hiring workflows with AI-assisted processing.',
+      'A recruitment platform that scores and ranks candidates against job requirements and supports the hiring workflow from application to decision.',
     image: '/ketari-project.webp',
-    imageAlt: 'Dark project card for the Intelligent Job Matching and Recruitment Automation Platform, showing planned features and its technology stack',
+    imageAlt: 'Ketari recruitment platform landing page with the headline "Hire better. Build stronger teams." beside a preview of the candidate matching dashboard',
     imageFit: 'contain',
     status: 'In progress',
-    stack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Python AI/ML'],
-    built: [], // TODO: move items here only when they work in the running app
-    planned: [
-      'Resume processing',
-      'Skill extraction',
-      'Job matching',
-      'Candidate ranking',
-      'Recruitment workflow support',
+    stack: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Python (Flask)'],
+    // Each line below describes what the code in the -recruitai repo does today.
+    built: [
+      'Resume upload with PDF and DOCX text extraction',
+      'Keyword-based skill extraction from resume text',
+      'Weighted job matching on skills, education, experience and location',
+      'Candidate ranking with match reasons and skill gaps',
+      'Hiring workflow: screening, shortlisting, interview scheduling and decisions',
+      'AI chat assistant using OpenAI or Gemini, with a local fallback',
     ],
+    planned: [], // add upcoming features here, e.g. model-based matching
     github: 'https://github.com/FIKEG1/-recruitai',
     demo: '',
   },
