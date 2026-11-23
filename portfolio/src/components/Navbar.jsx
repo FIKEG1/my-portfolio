@@ -3,6 +3,7 @@ import { Menu, X } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 import { nav, profile } from '../data/site.js'
 import CvButton from './CvButton.jsx'
+import InstallButton from './InstallButton.jsx'
 import ThemeToggle from './ThemeToggle.jsx'
 
 const sectionIds = nav.map((item) => item.href.replace('/#', ''))
@@ -104,6 +105,7 @@ export default function Navbar({ theme, onToggleTheme }) {
               <CvButton className="btn-sm" />
             </div>
           )}
+          <InstallButton compact className="hidden lg:inline-flex" />
           <ThemeToggle theme={theme} onToggle={onToggleTheme} />
           <button
             ref={menuToggleRef}
@@ -143,6 +145,7 @@ export default function Navbar({ theme, onToggleTheme }) {
               )
             })}
             {profile.cvUrl && <CvButton className="mt-2" />}
+            <InstallButton className="mt-2" onDone={() => setOpen(false)} />
           </nav>
         )}
       </div>
