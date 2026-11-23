@@ -1,27 +1,17 @@
 import { Download } from 'lucide-react'
 import { profile } from '../data/site.js'
 
+// Renders nothing until profile.cvUrl is set in src/data/site.js
+// (add cv.pdf to public/ and set cvUrl to '/cv.pdf').
 export default function CvButton({ variant = 'ghost', className = '' }) {
+  if (!profile.cvUrl) return null
+
   const styles = variant === 'primary' ? 'btn-primary' : 'btn-ghost'
 
-  if (profile.cvUrl) {
-    return (
-      <a className={`${styles} ${className}`} href={profile.cvUrl} download>
-        <Download size={16} aria-hidden="true" />
-        Download CV
-      </a>
-    )
-  }
-
   return (
-    <span
-      className={`${styles} btn-disabled ${className}`}
-      role="link"
-      aria-disabled="true"
-      title="Add cv.pdf to public/ and set profile.cvUrl in src/data/site.js"
-    >
+    <a className={`${styles} ${className}`} href={profile.cvUrl} download>
       <Download size={16} aria-hidden="true" />
-      CV coming soon
-    </span>
+      Download CV
+    </a>
   )
 }

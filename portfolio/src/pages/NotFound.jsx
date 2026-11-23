@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom'
+import { profile } from '../data/site.js'
+import { useDocumentTitle } from '../hooks/useDocumentTitle.js'
 
 export default function NotFound() {
+  useDocumentTitle(`Page not found | ${profile.name}`)
+
   return (
     <section className="mx-auto flex min-h-[70vh] max-w-content flex-col justify-center px-4 py-24 sm:px-6 lg:px-8">
       <p className="font-display text-sm tracking-[0.28em] text-copper uppercase dark:text-copper-bright">404</p>

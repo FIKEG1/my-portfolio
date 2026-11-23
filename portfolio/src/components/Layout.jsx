@@ -7,7 +7,7 @@ export default function Layout() {
   const { theme, toggle } = useTheme()
 
   return (
-    <div className="min-h-screen bg-paper text-paper-ink dark:bg-night dark:text-night-ink">
+    <div className="site-shell min-h-screen bg-paper text-paper-ink dark:bg-night dark:text-night-ink">
       <a className="skip-link" href="#main">
         Skip to content
       </a>

@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Mail } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
+import { Check, Copy, Mail } from 'lucide-react'
 import { profile } from '../data/site.js'
 import Section from './Section.jsx'
 import SocialLinks from './SocialLinks.jsx'
@@ -11,6 +11,32 @@ export default function Contact() {
   const [values, setValues] = useState(empty)
   const [errors, setErrors] = useState({})
   const [opened, setOpened] = useState(false)
+  // 'idle' | 'copied' | 'selected' (clipboard blocked, address highlighted instead)
+  const [copyState, setCopyState] = useState('idle')
+  const copyTimer = useRef(null)
+  const emailRef = useRef(null)
+
+  useEffect(() => () => window.clearTimeout(copyTimer.current), [])
+
+  const copyEmail = async () => {
+    let next = 'copied'
+    try {
+      await navigator.clipboard.writeText(profile.email)
+    } catch {
+      // Clipboard access can be blocked. Highlight the address so it can be copied by hand.
+      if (emailRef.current) window.getSelection()?.selectAllChildren(emailRef.current)
+      next = 'selected'
+    }
+    setCopyState(next)
+    window.clearTimeout(copyTimer.current)
+    copyTimer.current = window.setTimeout(() => setCopyState('idle'), 2500)
+  }
+
+  const copyLabel = {
+    idle: 'Copy email address',
+    copied: 'Copied',
+    selected: 'Address selected, copy it now',
+  }[copyState]
 
   const update = (field) => (event) => {
     setValues((current) => ({ ...current, [field]: event.target.value }))
@@ -126,7 +152,7 @@ export default function Contact() {
               {opened
                 ? `Your email app should have opened. If it did not, write to ${profile.email}.`
                 : profile.email
-                  ? 'This form prepares a message in your email app. It does not send mail by itself — no backend is connected yet.'
+                  ? 'This opens your email app with the message filled in. Nothing is sent until you press send there.'
                   : 'Add your email in src/data/site.js to enable the direct contact form.'}
             </p>
           </form>
@@ -135,17 +161,25 @@ export default function Contact() {
         <Reveal delay={0.08}>
           <aside className="surface p-6">
             <h3 className="font-display text-lg font-semibold">Direct</h3>
-            {profile.email ? (
-              <p className="mt-3">
-                <a href={`mailto:${profile.email}`}>{profile.email}</a>
-              </p>
-            ) : (
-              <p className="mt-3 text-sm muted">Use the contact form to reach out when an email address is added.</p>
+            {profile.email && (
+              <>
+                <p className="mt-3 text-sm muted">Prefer your own email app? Write to me at</p>
+                <p className="mt-1">
+                  <a ref={emailRef} href={`mailto:${profile.email}`} className="text-link font-medium break-all">
+                    {profile.email}
+                  </a>
+                </p>
+                <button type="button" className="btn-ghost btn-sm mt-4" onClick={copyEmail} aria-live="polite">
+                  {copyState === 'copied' ? (
+                    <Check size={14} aria-hidden="true" />
+                  ) : (
+                    <Copy size={14} aria-hidden="true" />
+                  )}
+                  {copyLabel}
+                </button>
+              </>
             )}
-            <p className="mt-2 text-sm muted">
-              Add your real email, GitHub, and LinkedIn links in src/data/site.js to unlock direct contact options.
-            </p>
-            <SocialLinks className="mt-5" />
+            <SocialLinks className="mt-6 border-t border-paper-line pt-5 dark:border-night-line" />
           </aside>
         </Reveal>
       </div>

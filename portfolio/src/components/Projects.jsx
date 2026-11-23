@@ -1,28 +1,62 @@
-import { Check, Circle, ExternalLink } from 'lucide-react'
+import { ArrowUpRight, Check, Circle, Github } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { projects } from '../data/site.js'
 import Section from './Section.jsx'
 import Reveal from './Reveal.jsx'
+
+function ProjectLinks({ project }) {
+  if (!project.github && !project.demo) return null
+
+  const internalDemo = project.demo?.startsWith('/')
+
+  return (
+    <div className="mt-auto flex flex-wrap items-center gap-3 pt-6">
+      {project.demo &&
+        (internalDemo ? (
+          <Link to={project.demo} className="btn-primary btn-sm">
+            Open live demo
+            <ArrowUpRight size={14} aria-hidden="true" />
+          </Link>
+        ) : (
+          <a href={project.demo} target="_blank" rel="noreferrer" className="btn-primary btn-sm">
+            Open live demo
+            <ArrowUpRight size={14} aria-hidden="true" />
+            <span className="sr-only">(opens in a new tab)</span>
+          </a>
+        ))}
+      {project.github && (
+        <a href={project.github} target="_blank" rel="noreferrer" className="btn-ghost btn-sm">
+          <Github size={14} aria-hidden="true" />
+          View code
+          <span className="sr-only">(opens in a new tab)</span>
+        </a>
+      )}
+    </div>
+  )
+}
 
 function ProjectCard({ project }) {
   const built = project.status === 'Built'
 
   return (
-    <article className="surface flex h-full flex-col p-6">
+    <article className="surface flex h-full flex-col p-5 sm:p-6">
       {project.image && (
         <img
           src={project.image}
           alt={project.imageAlt}
+          width={960}
+          height={480}
           loading="lazy"
           decoding="async"
-          className={`mb-5 aspect-video w-full rounded-lg ${
-            project.imageFit === 'contain' ? 'bg-night object-contain' : 'object-cover'
+          className={`mb-5 aspect-[2/1] w-full rounded-xl border border-paper-line dark:border-night-line ${
+            project.imageFit === 'contain' ? 'bg-night object-contain' : 'object-cover object-left-top'
           }`}
         />
       )}
       <div className="flex items-start justify-between gap-3">
         <h3 className="font-display text-xl font-semibold leading-snug">{project.title}</h3>
         <span
-          className={`shrink-0 rounded-full border px-2.5 py-0.5 text-xs ${
+          className={`mt-0.5 shrink-0 rounded-full border px-2.5 py-0.5 text-xs ${
             built
               ? 'border-emerald-700 text-emerald-800 dark:border-emerald-400 dark:text-emerald-300'
               : 'border-amber-700 text-amber-800 dark:border-amber-300 dark:text-amber-200'
@@ -76,20 +110,7 @@ function ProjectCard({ project }) {
         ))}
       </ul>
 
-      <div className="mt-auto flex flex-wrap gap-4 pt-5 text-sm">
-        {project.github ? (
-          <a href={project.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1">
-            GitHub <ExternalLink size={13} aria-hidden="true" />
-          </a>
-        ) : (
-          <span className="muted">Code not public yet</span>
-        )}
-        {project.demo ? (
-          <a href={project.demo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1">
-            Live demo <ExternalLink size={13} aria-hidden="true" />
-          </a>
-        ) : null}
-      </div>
+      <ProjectLinks project={project} />
     </article>
   )
 }
@@ -100,9 +121,9 @@ export default function Projects() {
       id="projects"
       index={3}
       title="Projects"
-      intro="Implemented means it works in the current build. Planned items are still in development. Add GitHub and demo URLs in src/data/site.js only when they exist."
+      intro="Each card separates what already works from what is still planned."
     >
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className="grid gap-5 lg:grid-cols-2">
         {projects.map((project, index) => (
           <Reveal key={project.title} delay={index * 0.04}>
             <ProjectCard project={project} />

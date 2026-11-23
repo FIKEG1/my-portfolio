@@ -1,27 +1,38 @@
-import { motion, useReducedMotion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 
+// Fades content in the first time it scrolls into view.
+// The motion itself lives in index.css (.reveal) and is disabled for reduced-motion users.
 export default function Reveal({ children, className = '', delay = 0, direction = 'up' }) {
-  const reduce = useReducedMotion()
+  const ref = useRef(null)
+  const [shown, setShown] = useState(false)
 
-  if (reduce) {
-    return <div className={className}>{children}</div>
-  }
+  useEffect(() => {
+    const node = ref.current
+    if (!node || typeof IntersectionObserver === 'undefined') {
+      setShown(true)
+      return undefined
+    }
 
-  const offset = {
-    up: { y: 16 },
-    left: { x: 20 },
-    right: { x: -20 },
-  }[direction]
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+        setShown(true)
+        observer.disconnect()
+      },
+      { rootMargin: '0px 0px -40px 0px' },
+    )
+
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [])
 
   return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, ...offset }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+    <div
+      ref={ref}
+      className={`reveal reveal-${direction}${shown ? ' is-shown' : ''} ${className}`}
+      style={delay ? { transitionDelay: `${delay}s` } : undefined}
     >
       {children}
-    </motion.div>
+    </div>
   )
 }

@@ -1,5 +1,5 @@
 // EDIT THIS FILE. The site reads all visible content from here.
-// Leave a URL as '' and the UI hides the link or marks it as unavailable.
+// Leave a URL as '' and the UI hides that link or button.
 // Never add GitHub, demo, or CV links until the files actually exist.
 
 export const profile = {
@@ -13,7 +13,7 @@ export const profile = {
   cvUrl: '',
   location: 'Ethiopia',
   availability: 'Open to junior roles, remote work, and freelance projects',
-  photo: '/me.jpg',
+  photo: '/me.webp',
   photoAlt: 'Portrait of FIKADU GUYE',
 }
 
@@ -84,10 +84,31 @@ export const skills = [
 
 export const projects = [
   {
+    title: 'AURA Smart Commerce',
+    summary:
+      'A demo storefront with intent search, personalized recommendations, a shopping assistant, cart discounts, and a simulated checkout.',
+    image: '/aura-shop.svg',
+    imageAlt: 'AURA smart commerce storefront with gold and teal product cards on a dark background',
+    imageFit: 'contain',
+    status: 'Built',
+    stack: ['React.js', 'React Router', 'localStorage'],
+    built: [
+      'Product catalog with category filters',
+      'Intent search (gifts, budgets, setups)',
+      'Personalized recommendations from views, saved items, and bag contents',
+      'Shopping assistant that shortlists products',
+      'Cart with bundle discount and free-shipping threshold',
+      'Simulated checkout and local order history',
+    ],
+    planned: [],
+    github: '',
+    demo: '/aura',
+  },
+  {
     title: 'Intelligent Job Matching and Recruitment Automation Platform',
     summary:
       'A recruitment platform that aims to match candidates with roles and support hiring workflows with AI-assisted processing.',
-    image: '/ketari-project.png',
+    image: '/ketari-project.webp',
     imageAlt: 'Dark project card for the Intelligent Job Matching and Recruitment Automation Platform, showing planned features and its technology stack',
     imageFit: 'contain',
     status: 'In progress',
@@ -107,7 +128,7 @@ export const projects = [
     title: 'Health Center Management System',
     summary:
       'A healthcare administration web application with role-based access for day-to-day clinic operations.',
-    image: '/health-center-project.png',
+    image: '/health-center-project.webp',
     imageAlt: 'Health Center website homepage featuring appointment and location buttons',
     status: 'Built',
     stack: ['PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript'],
@@ -120,7 +141,7 @@ export const projects = [
     title: 'Online Quiz System',
     summary:
       'A web-based assessment system with questions, user accounts, and an administration area.',
-    image: '/online-quiz-project.png',
+    image: '/online-quiz-project.webp',
     imageAlt: 'Online Quiz homepage featuring a challenge-yourself headline and quiz graphic',
     status: 'Built',
     stack: ['PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript'],
@@ -133,7 +154,7 @@ export const projects = [
     title: 'Smart IT Technical Support Expert System',
     summary:
       'A rule-based troubleshooting assistant for common hardware, networking, software, and security issues.',
-    image: '/smart-it-support-project.png',
+    image: '/smart-it-support-project.webp',
     imageAlt: 'Smart IT Support expert system dashboard showing troubleshooting categories and diagnostic cards',
     imageFit: 'contain',
     status: 'Built',
@@ -166,6 +187,9 @@ export const journey = [
   },
 ]
 
+// Shown publicly as "What I am learning next".
+// Add status: 'In progress' or status: 'Completed' to an item to show a badge on it.
+// Items without a status are shown as plain goals. Only mark Completed when it is true.
 export const learningPlan = {
   certificates: [
     {

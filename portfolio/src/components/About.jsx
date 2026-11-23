@@ -8,7 +8,7 @@ export default function About() {
       id="about"
       index={1}
       title="About"
-      intro="A concise snapshot of how I work. Update the paragraphs in src/data/site.js."
+      intro="A concise snapshot of how I work and what I am focused on."
     >
       <div className="grid gap-6 lg:grid-cols-12">
         <Reveal className="space-y-5 lg:col-span-8">

@@ -11,6 +11,7 @@ import {
   Sun,
   Users,
 } from 'lucide-react'
+import { useDocumentTitle } from '../hooks/useDocumentTitle.js'
 import './ketari.css'
 
 const candidates = [
@@ -129,6 +130,7 @@ export default function KetariPage() {
   const [dark, setDark] = useState(false)
   const [running, setRunning] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  useDocumentTitle('Ketari | AI-powered recruitment (concept preview)')
 
   const runMatching = () => {
     setRunning(true)

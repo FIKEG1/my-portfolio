@@ -8,7 +8,7 @@ export default function Services() {
       id="services"
       index={5}
       title="Services"
-      intro="Work I can take on today. Add or remove items in src/data/site.js as your range grows."
+      intro="Work I can take on today."
     >
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((service, index) => (
