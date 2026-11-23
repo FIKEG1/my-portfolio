@@ -101,7 +101,7 @@ export const projects = [
       'Simulated checkout and local order history',
     ],
     planned: [],
-    github: '',
+    github: 'https://github.com/FIKEG1/my-portfolio/tree/main/portfolio/src/shop',
     demo: '/aura',
   },
   {
@@ -121,7 +121,7 @@ export const projects = [
       'Candidate ranking',
       'Recruitment workflow support',
     ],
-    github: '',
+    github: 'https://github.com/FIKEG1/-recruitai',
     demo: '',
   },
   {
@@ -134,7 +134,7 @@ export const projects = [
     stack: ['PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript'],
     built: ['Healthcare administration workflows', 'Role-based functionality'],
     planned: [],
-    github: '',
+    github: 'https://github.com/FIKEG1/Health_center2',
     demo: '',
   },
   {
@@ -147,6 +147,8 @@ export const projects = [
     stack: ['PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript'],
     built: ['Online assessments', 'Question management', 'User accounts', 'Administration'],
     planned: [],
+    // The ONLINE-QUIZ-APP repo on GitHub is still empty. Push the code there, then set:
+    // github: 'https://github.com/FIKEG1/ONLINE-QUIZ-APP',
     github: '',
     demo: '',
   },
@@ -166,7 +168,7 @@ export const projects = [
       'Security troubleshooting rules',
     ],
     planned: [],
-    github: '',
+    github: 'https://github.com/FIKEG1/smart-it-technical-support',
     demo: '',
   },
 ]
