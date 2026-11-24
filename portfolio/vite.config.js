@@ -34,9 +34,11 @@ export default defineConfig({
         ],
       },
       workbox: {
-        // Cache the app shell and the optimized images. The original .jpg/.png
-        // files in public/ are unused, so they are deliberately left out.
-        globPatterns: ['**/*.{js,css,html,svg,webp}'],
+        // Cache the app shell, the optimized images and the CV. The original
+        // .jpg/.png files in public/ are unused, so they are deliberately left out.
+        // The PDF must be precached: otherwise the service worker answers the
+        // CV link with index.html (the SPA fallback) instead of the file.
+        globPatterns: ['**/*.{js,css,html,svg,webp,pdf}'],
         cleanupOutdatedCaches: true,
         runtimeCaching: [
           {

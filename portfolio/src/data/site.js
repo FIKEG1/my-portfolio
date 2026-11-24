@@ -10,7 +10,7 @@ export const profile = {
   email: 'fikaduguye0545@gmail.com',
   github: 'https://github.com/FIKEG1',
   linkedin: '',
-  cvUrl: '',
+  cvUrl: '/Fikadu_Guye_Resume.pdf',
   location: 'Ethiopia',
   availability: 'Open to junior roles, remote work, and freelance projects',
   photo: '/me.webp',
@@ -177,6 +177,18 @@ export const projects = [
 
 // Keep only verified items. Delete any row you cannot confirm.
 export const journey = [
+  {
+    when: 'Jul — Aug 2026',
+    what: 'Software Development Intern',
+    where: 'Sidama Innovation and Technology Agency (SITA), Hawassa',
+    note: 'Tested software before launch, built mobile applications for iOS and Android, worked in Java, C++ and Python, and documented each development phase.',
+  },
+  {
+    when: 'Jul 2026',
+    what: 'BSc in Information Science',
+    where: 'Jimma University, Jimma, Ethiopia',
+    note: 'Designed and built web applications through academic projects, teamwork, and hackathon participation.',
+  },
   {
     when: '2024 — present',
     what: 'Independent software development',
