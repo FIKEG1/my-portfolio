@@ -56,7 +56,7 @@ export default function Experience() {
       id="experience"
       index={4}
       title="Experience"
-      intro="Self-directed work so far, built up one project at a time."
+      intro="An internship, a university degree, and self-directed projects built one at a time."
     >
       <ol className="relative ml-2 border-l border-paper-line dark:border-night-line">
         {journey.map((item, index) => (
